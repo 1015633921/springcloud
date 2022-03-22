@@ -1,0 +1,42 @@
+
+File localConfigFile = file(rootDir.path + '/build_local.gradle')
+if (localConfigFile.exists()) {
+    apply from: localConfigFile
+
+    /**
+     * key : project 的 name
+     * value : groupId + artifactId
+     */
+    Map<String, String> projectMavenMap = new HashMap<>()
+
+    println("=========================== local_projects start ===========================")
+    if (gradle.hasProperty('local_projects')) {
+
+        gradle.ext.local_projects.each { Object localProject ->
+            if (localProject.buildByProject) {
+                File localProjectPath = file(localProject.absolutePath)
+                if (localProjectPath.exists() && localProjectPath.isDirectory()) {
+                    String name = localProject.projectName == '' ? localProjectPath.name : localProject.projectName
+                    if (!name.startsWith(":")) {
+                        name = ":" + name
+                    }
+                    include name
+                    project(name).projectDir = localProjectPath
+
+                    projectMavenMap.put(name, localProject.groupId + ":" + localProject.artifactId)
+
+                    println("[local build project] " + (localProject.groupId + ":" + localProject.artifactId) + " --> " + localProject.projectName)
+                } else {
+                    throw new GradleException("local build project dir error : " + localProject.absolutePath)
+                }
+            }
+        }
+    }
+    println("=========================== local_projects end ===========================")
+    gradle.rootProject(new Action<Project>() {
+        @Override
+        void execute(Project project) {
+            project.ext.projectMavenMap = projectMavenMap
+        }
+    })
+}

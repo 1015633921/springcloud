@@ -1,0 +1,28 @@
+server:
+  port: 2200
+spring:
+  datasource:
+    driver-class-: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 100
+    initialization-mode: always
+    password: wander666
+    platform: mysql
+    tomcat:
+      initial-size: 10
+      max-active: 200
+      max-idle: 100
+      max-wait: 10000
+      min-idle: 20
+    url: jdbc:mysql://rm-wz90fx7092498yl0yqo.mysql.rds.aliyuncs.com:3306/test_wander
+    username: linlongxin
+  config:
+    import: optional:configserver:http://localhost:8888/
+  application:
+    name: account-server
+  cloud:
+    config:
+      profile: local_test
+      label: master
+      name: application_local_test.ymal
+

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -11,7 +12,9 @@
             <option value="$PROJECT_DIR$/account" />
             <option value="$PROJECT_DIR$/album" />
             <option value="$PROJECT_DIR$/config" />
+            <option value="$PROJECT_DIR$/config-service" />
             <option value="$PROJECT_DIR$/eureka" />
+            <option value="$PROJECT_DIR$/feign" />
             <option value="$PROJECT_DIR$/gateway" />
             <option value="$PROJECT_DIR$/operation" />
             <option value="$PROJECT_DIR$/search" />

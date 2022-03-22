@@ -6,4 +6,6 @@ include 'operation'
 include 'gateway'
 include 'eureka'
 include 'config'
+include 'config-service'
+include 'feign'
 

@@ -1,0 +1,18 @@
+server:
+  port: 2500
+
+spring:
+  application:
+    name: feign-server
+  cloud:
+    config:
+      server:
+        git:
+          default-label: master
+          uri: https://gitee.com/westbrook0523/config.git
+          username: 17784081024
+          password: dongyu@0523
+          timeout: 30
+          force-pull: true
+
+
