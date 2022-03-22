@@ -1,9 +1,6 @@
 server:
-  port: 9001
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+  port: 8888
+
 spring:
   application:
     name: config-server
@@ -15,8 +12,6 @@ spring:
           username: 1015633921@qq.com
           password: dongyu@0523
           default-label: master
-
-
-
+          timeout: 30
 
 
